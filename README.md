@@ -11,3 +11,5 @@ This project contains descriptions of the request and response data formats. The
 This is NOT intended to capture all the various rules and policies supported by all DRMs today. It is intended to reflect only those features which are suppported today are are likely to b supported in the near future by the Encryted Media Extensions spec. 
 
 Supporting this protocol for the User Agent would mean that Key Systems would produce requests and consume responses in the proposed formats. Supporting this request on the server side would mean that a service is available which will consume requests and produce responses. In either case new support must be added, since this is a new protocol (although it should map fairly well to all existing DRM provider protocols). 
+
+The request and response should be delivered over a secure transport like TLS. With the exception of the encrypted keys, all of the request/response data is plain text. This means that it would potentially violate user privacy if transmitted over an un-encrypted channel.
