@@ -35,18 +35,18 @@ BEGIN
         outputRestricted BOOLEAN,
     }
 
-    -- The request data is cryptographically signed by the client.
+    -- The response data is cryptographically signed by the server.
     -- For ASN.1 messages, we use Cryptographic Message Syntax defined here: http://tools.ietf.org/html/rfc5652
-    EME-SignedRequest ::= SignedData 
+    EME-SignedResponse ::= SignedData 
     
     -- The message contents
     EncapsulatedContentInfo ::= SEQUENCE {
 
-        -- Defined for EME-SignedRequest to be OBJECT IDENTIFIER(1.3.6.1.3.9999) 
+        -- Defined for EME-SignedResponse to be OBJECT IDENTIFIER(1.3.6.1.3.9998) 
         -- Above OID is for illustrative purposes only and should be replaced with a real one.
         eContentType ContentType,   
         
-        -- REQUIRED for EME-SignedRequest and defined to be the encoded EME-RequestData.
+        -- REQUIRED for EME-SignedResponse and defined to be the encoded EME-ResponseData.
         eContent [0] EXPLICIT OCTET STRING OPTIONAL 
     }
     
