@@ -1,0 +1,53 @@
+EME-GENERIC-RESPONSE DEFINITIONS ::= 
+BEGIN
+
+    EME-KeyId ::= UTF8String
+    
+    EME-EncryptedKey ::= SEQUENCE {
+    
+        -- Key encrypted for deliveryKeyIdentifier from EME-SignedRequest.
+        key OCTET STRING,
+        
+        -- Key ID from EME-SignedRequest that matches encrypted key
+        keyId EME-KeyId
+    }
+       
+    EME-EncryptedKeys ::= SET OF EME-EncryptedKey
+    
+    EME-ResponseData ::= SEQUENCE {
+
+        -- The time that the response was created, according to the server.
+        responseTime UTCTime,
+        
+        -- The time after which this license should no longer be used, according to the server.
+        expiration UTCTime,
+        
+        -- The list of requested keys that were authorized for use by this client
+        requestedKeys EME-EncryptedKeys,
+        
+        -- If TRUE, application can use loadSession().
+        cachingAllowed BOOLEAN,
+        
+        -- If TRUE, application should call remove() when done with this license.
+        returnRequested BOOLEAN,
+        
+        -- If TRUE, application should expect errors related to output restrictions.
+        outputRestricted BOOLEAN,
+    }
+
+    -- The request data is cryptographically signed by the client.
+    -- For ASN.1 messages, we use Cryptographic Message Syntax defined here: http://tools.ietf.org/html/rfc5652
+    EME-SignedRequest ::= SignedData 
+    
+    -- The message contents
+    EncapsulatedContentInfo ::= SEQUENCE {
+
+        -- Defined for EME-SignedRequest to be OBJECT IDENTIFIER(1.3.6.1.3.9999) 
+        -- Above OID is for illustrative purposes only and should be replaced with a real one.
+        eContentType ContentType,   
+        
+        -- REQUIRED for EME-SignedRequest and defined to be the encoded EME-RequestData.
+        eContent [0] EXPLICIT OCTET STRING OPTIONAL 
+    }
+    
+END

@@ -1,0 +1,38 @@
+EME-GENERIC-REQUEST DEFINITIONS ::= 
+BEGIN
+
+    EME-KeyId ::= UTF8String
+    
+    EME-KeyIds ::= SET OF EME-KeyId
+    
+    EME-RequestData ::= SEQUENCE {
+
+        -- The time that the request was made, according to the client.
+        requestTime UTCTime,
+        
+        -- The list of key ids to request keys for. This can be constructed from the Common PSSH.
+        requestedKeyIds EME-KeyIds,
+        
+        -- Indicates whether the application intends for the license to be cached. Set to TRUE if intending to use loadSession later.
+        requestingOfflineLicense BOOLEAN,
+        
+        -- A Key System specific identifier for the key to use when encrypting keys for delivery to the client.
+        deliveryKeyIdentifier OCTET STRING,
+    }
+
+    -- The request data is cryptographically signed by the client.
+    -- For ASN.1 messages, we use Cryptographic Message Syntax defined here: http://tools.ietf.org/html/rfc5652
+    EME-SignedRequest ::= SignedData 
+    
+    -- The message contents
+    EncapsulatedContentInfo ::= SEQUENCE {
+
+        -- Defined for EME-SignedRequest to be OBJECT IDENTIFIER(1.3.6.1.3.9999) 
+        -- Above OID is for illustrative purposes only and should be replaced with a real one.
+        eContentType ContentType,   
+        
+        -- REQUIRED for EME-SignedRequest and defined to be the encoded EME-RequestData.
+        eContent [0] EXPLICIT OCTET STRING OPTIONAL 
+    }
+    
+END
