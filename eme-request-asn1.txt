@@ -7,6 +7,9 @@ BEGIN
     
     EME-RequestData ::= SEQUENCE {
 
+        -- The client Key System making the request.
+        keySystem UTF8String,
+
         -- The time that the request was made, according to the client.
         requestTime UTCTime,
         
