@@ -1,7 +1,7 @@
 # eme-generic-protocol
 Strawman proposal for a generic license request/response protocol for use by Key Systems using the Encrypted Media Extensions API. 
 
-At the October 2014 W3C TPAC meeting we had some brief discussion about the need for a common request/response protocol, roughly parallel to the Common PSSH Format that is supported by the EME spec today. There was some agreement that such a protocol would be useful but no proposals have come to light yet (as far as I know). I believe this would be a useful tool in addressing some of the concerns raised:
+At the [October 2014 W3C TPAC meeting](http://www.w3.org/2014/10/30-html-wg-minutes.html) we had some brief discussion about the need for a common request/response protocol, roughly parallel to the Common PSSH Format that is supported by the EME spec today. There was some agreement that such a protocol would be useful but no proposals have come to light yet (as far as I know). I believe this would be a useful tool in addressing some of the concerns raised:
 - [Perspectives on Encrypted Media Extensions](http://www.w3.org/blog/2013/05/perspectives-on-encrypted-medi) 
 - [Bug 20944 - EME should do more to encourage/ensure CDM-level interop](https://www.w3.org/Bugs/Public/show_bug.cgi?id=20944)
 - [Bug 27055 - Surfacing license to the user](https://www.w3.org/Bugs/Public/show_bug.cgi?id=27055)
