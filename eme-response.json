@@ -6,7 +6,9 @@ For JSON messages, we use JWS defined here: https://tools.ietf.org/html/draft-ie
  
 Definitions:
     EME-ResponseData.responseTime: The time that the response was created, according to the server, in UTC format. 
-    EME-ResponseData.requestedKeys: The list of requested keys that were authorized for use by this client. Each element contains the Key ID from EME-SignedRequest and the matching key encrypted for deliveryKeyIdentifier from EME-SignedRequest.
+    EME-ResponseData.requestedKeys: The list of requested keys that were authorized for use by this client. 
+    EME-ResponseData.requestedKeys.keyId: A key id from EME-SignedRequest.requestedKeyIds.
+    EME-ResponseData.requestedKeys.key: The matching key encrypted for deliveryKeyIdentifier.
     EME-ResponseData.requestedKeys: The list of requested keys that were authorized for use by this client. 
     EME-ResponseData.expiration: OPTIONAL. The time after which this license should no longer be used, according to the server.
     EME-ResponseData.cachingAllowed: OPTIONAL. If true, application can use loadSession().
@@ -19,7 +21,7 @@ Definitions:
     "EME-ResponseData": {
         "responseTime": "1970-01-01T11:59:59.9Z",
         "requestedKeys": [
-            { "01234567-89ABCDEF-01234567-89ABCDEF", "<BASE64-ENCODED-DATA>" },
+            { keyId: "01234567-89ABCDEF-01234567-89ABCDEF", key: "<BASE64-ENCODED-DATA>" },
         ],
         "expiration": "1970-01-01T11:59:59.9Z",
         "cachingAllowed": false,
