@@ -20,7 +20,7 @@ Definitions:
         "requestedKeyIds": [
             "01234567-89ABCDEF-01234567-89ABCDEF",
         ],
-        "deliveryKeyIdentifier": "<BASE64-ENCODED-DATA>"
+        "deliveryKeyIdentifier": "<BASE64-ENCODED-DATA>",
         "requestingOfflineLicense": false,
     },
 }
