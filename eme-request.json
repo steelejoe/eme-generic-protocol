@@ -1,0 +1,36 @@
+/* The message contents encoded as "payload" for the EME-SignedRequest */
+{
+    "EME-RequestData": {
+    
+        /* The client Key System making the request. */
+        "keySystem": "com.example.keysystem",
+        
+        /* The time that the request was made, according to the client. */
+        "requestTime": "1970-01-01T11:59:59.9Z",
+        
+        /* The list of key ids to request keys for. This can be constructed from the Common PSSH. */
+        "requestedKeyIds": [
+            "01234567-89ABCDEF-01234567-89ABCDEF",
+        ],
+        
+        /* A Key System specific identifier for the key to use when encrypting keys for delivery to the client. */
+        "deliveryKeyIdentifier": "<BASE64-ENCODED-DATA>"
+        
+        /* OPTIONAL. Indicates whether the application intends for the license to be cached. Set to TRUE if intending to use loadSession later. */
+        "requestingOfflineLicense": true | false,
+
+    },
+}
+
+/*  The request data is cryptographically signed by the client.
+    For JSON messages, we use JWS defined here: https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41 */
+{
+    "EME-SignedRequest": {
+        "payload": "<BASE64-ENCODED-DATA>",
+        "protected":"eyJhbGciOiJFUzI1NiJ9",
+        "header": {
+            "kid":"e9bc097a-ce51-4036-9562-d2ade882db0d",
+        },
+        "signature": "<BASE64-ENCODED-DATA>"
+    }
+}

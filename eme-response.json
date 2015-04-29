@@ -1,0 +1,41 @@
+/* The message contents encoded as "payload" for the EME-SignedResponse */
+{
+    "EME-ResponseData": {
+
+        /* The time that the response was created, according to the server. */
+        "responseTime": "1970-01-01T11:59:59.9Z",
+
+        /* The list of requested keys that were authorized for use by this client */
+        "requestedKeys": [
+        
+            /*  Key ID from EME-SignedRequest, matching key encrypted for deliveryKeyIdentifier from EME-SignedRequest */
+            { "01234567-89ABCDEF-01234567-89ABCDEF", "<BASE64-ENCODED-DATA>" },
+        ],
+
+        /* OPTIONAL. The time after which this license should no longer be used, according to the server. */
+        "expiration": "1970-01-01T11:59:59.9Z",
+
+        /* OPTIONAL. If TRUE, application can use loadSession(). */
+        "cachingAllowed": true | false,
+
+        /* OPTIONAL. If TRUE, application should call remove() when done with this license. */
+        "returnRequested": true | false,
+
+        /* OPTIONAL. If TRUE, application should expect errors related to output restrictions. */
+        "outputRestricted": true | false,
+        
+    },
+}
+
+/*  The request data is cryptographically signed by the client.
+    For JSON messages, we use JWS defined here: https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41 */
+{
+    "EME-SignedResponse": {
+        "payload": "<BASE64-ENCODED-DATA>",
+        "protected":"eyJhbGciOiJFUzI1NiJ9",
+        "header": {
+            "kid":"e9bc097a-ce51-4036-9562-d2ade882db0d",
+        },
+        "signature": "<BASE64-ENCODED-DATA>"
+    }
+}

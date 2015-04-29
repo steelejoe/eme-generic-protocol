@@ -16,11 +16,11 @@ BEGIN
         -- The list of key ids to request keys for. This can be constructed from the Common PSSH.
         requestedKeyIds EME-KeyIds,
         
-        -- Indicates whether the application intends for the license to be cached. Set to TRUE if intending to use loadSession later.
-        requestingOfflineLicense BOOLEAN,
-        
         -- A Key System specific identifier for the key to use when encrypting keys for delivery to the client.
         deliveryKeyIdentifier OCTET STRING,
+        
+        -- Indicates whether the application intends for the license to be cached. Set to TRUE if intending to use loadSession later.
+        requestingOfflineLicense [0] EXPLICIT BOOLEAN OPTIONAL,
     }
 
     -- The request data is cryptographically signed by the client.

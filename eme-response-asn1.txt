@@ -19,20 +19,20 @@ BEGIN
         -- The time that the response was created, according to the server.
         responseTime UTCTime,
         
-        -- The time after which this license should no longer be used, according to the server.
-        expiration UTCTime,
-        
         -- The list of requested keys that were authorized for use by this client
         requestedKeys EME-EncryptedKeys,
         
+        -- The time after which this license should no longer be used, according to the server.
+        expiration [0] EXPLICIT UTCTime OPTIONAL,
+        
         -- If TRUE, application can use loadSession().
-        cachingAllowed BOOLEAN,
+        cachingAllowed [1] EXPLICIT BOOLEAN OPTIONAL,
         
         -- If TRUE, application should call remove() when done with this license.
-        returnRequested BOOLEAN,
+        returnRequested [2] EXPLICIT BOOLEAN OPTIONAL,
         
         -- If TRUE, application should expect errors related to output restrictions.
-        outputRestricted BOOLEAN,
+        outputRestricted [3] EXPLICIT BOOLEAN OPTIONAL,
     }
 
     -- The response data is cryptographically signed by the server.
