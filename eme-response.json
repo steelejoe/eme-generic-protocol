@@ -21,7 +21,7 @@ Definitions:
     "EME-ResponseData": {
         "responseTime": "1970-01-01T11:59:59.9Z",
         "requestedKeys": [
-            { keyId: "01234567-89ABCDEF-01234567-89ABCDEF", key: "<BASE64-ENCODED-DATA>" },
+            { "keyId": "01234567-89ABCDEF-01234567-89ABCDEF", "key": "<BASE64-ENCODED-DATA>" },
         ],
         "expiration": "1970-01-01T11:59:59.9Z",
         "cachingAllowed": false,
